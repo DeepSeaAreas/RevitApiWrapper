@@ -2,29 +2,57 @@
 
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
-		<LangVersion>8</LangVersion>
+		<LangVersion>preview</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
-		<Configurations>Debug;Release;Rvt_19_Release;Rvt_20_Release;Rvt_21_Release;Rvt_22_Release</Configurations>
+		<Configurations>Debug;Rvt_19_Debug;Rvt_20_Debug;Rvt_21_Debug;Rvt_22_Debug;Release;Rvt_19_Release;Rvt_20_Release;Rvt_21_Release;Rvt_22_Release;Rvt_23_Debug</Configurations>
+		<Configurations>$(Configurations);Release;Rvt_19_Release;Rvt_20_Release;Rvt_21_Release;Rvt_22_Release</Configurations>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="$(Configuration.Contains('Debug'))">
+    	<DebugSymbols>true</DebugSymbols>
+    	<DebugType>full</DebugType>
+    <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+  </PropertyGroup>
 
-	<ItemGroup Condition="'$(Configuration)'=='Rvt_19_Release'">
-		<PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2019.0.0" />
-	</ItemGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('Release'))">
+    	<Optimize>true</Optimize>
+    	<DebugType>none</DebugType>
+    	<DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
 
-	<ItemGroup Condition="'$(Configuration)'=='Rvt_20_Release'">
-		<PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2020.0.0" />
-	</ItemGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('19'))">
+    	<RevitVersion>2019</RevitVersion>
+    	<DefineConstants>$(DefineConstants);R19</DefineConstants>
+  </PropertyGroup>
 
+	<PropertyGroup Condition="$(Configuration.Contains('20'))">
+    	<RevitVersion>2020</RevitVersion>
+    	<DefineConstants>$(DefineConstants);R20</DefineConstants>
+  </PropertyGroup>
 
-	<ItemGroup Condition="'$(Configuration)'=='Rvt_21_Release'">
-		<PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2021.0.0" />
-	</ItemGroup>
+  <PropertyGroup Condition="$(Configuration.Contains('21'))">
+    	<RevitVersion>2021</RevitVersion>
+    	<DefineConstants>$(DefineConstants);R21</DefineConstants>
+  </PropertyGroup>
 
-	<ItemGroup Condition="'$(Configuration)'=='Rvt_22_Release'">
-		<PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2022.0.0" />
-	</ItemGroup>
+	<PropertyGroup Condition="$(Configuration.Contains('22'))">
+    	<RevitVersion>2022</RevitVersion>
+    	<DefineConstants>$(DefineConstants);R22</DefineConstants>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="$(Configuration.Contains('23'))">
+    	<RevitVersion>2023</RevitVersion>
+    	<DefineConstants>$(DefineConstants);R23</DefineConstants>
+  </PropertyGroup>
+
+<PropertyGroup>
+    <Version>$(RevitVersion)</Version>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+ <ItemGroup>
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" />
+  </ItemGroup>
 	
-
-
 </Project>
