@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitApiWrapper", "RevitApiWrapper\RevitApiWrapper.csproj", "{363D3ED9-1A39-4219-BC0B-772CFEE35ED9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{363D3ED9-1A39-4219-BC0B-772CFEE35ED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363D3ED9-1A39-4219-BC0B-772CFEE35ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363D3ED9-1A39-4219-BC0B-772CFEE35ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363D3ED9-1A39-4219-BC0B-772CFEE35ED9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {646538E7-669D-4B50-849A-56C257BB9AE5}
+	EndGlobalSection
+EndGlobal
