@@ -4,8 +4,8 @@
 		<TargetFramework>net48</TargetFramework>
 		<LangVersion>preview</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
-		<Configurations>Debug;Rvt_19_Debug;Rvt_20_Debug;Rvt_21_Debug;Rvt_22_Debug;Release;Rvt_19_Release;Rvt_20_Release;Rvt_21_Release;Rvt_22_Release;Rvt_23_Debug</Configurations>
-		<Configurations>$(Configurations);Release;Rvt_19_Release;Rvt_20_Release;Rvt_21_Release;Rvt_22_Release</Configurations>
+		<Configurations>Debug;Debug2019;Debug2020;Debug2021;Debug2022;Debug2023;Release2019;Release2020;Release2021;Release2022;Release2023</Configurations>
+		<Configurations>$(Configurations);Release;Release2019;Release2020;Release2021;Release2022;Release2023</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration.Contains('Debug'))">
@@ -22,27 +22,27 @@
 
 	<PropertyGroup Condition="$(Configuration.Contains('19'))">
     	<RevitVersion>2019</RevitVersion>
-    	<DefineConstants>$(DefineConstants);R19</DefineConstants>
+    	<DefineConstants>$(DefineConstants);R2019</DefineConstants>
   </PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration.Contains('20'))">
     	<RevitVersion>2020</RevitVersion>
-    	<DefineConstants>$(DefineConstants);R20</DefineConstants>
+    	<DefineConstants>$(DefineConstants);R2020</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(Configuration.Contains('21'))">
     	<RevitVersion>2021</RevitVersion>
-    	<DefineConstants>$(DefineConstants);R21</DefineConstants>
+    	<DefineConstants>$(DefineConstants);R2021</DefineConstants>
   </PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration.Contains('22'))">
     	<RevitVersion>2022</RevitVersion>
-    	<DefineConstants>$(DefineConstants);R22</DefineConstants>
+    	<DefineConstants>$(DefineConstants);R2022</DefineConstants>
   </PropertyGroup>
 
 	<PropertyGroup Condition="$(Configuration.Contains('23'))">
     	<RevitVersion>2023</RevitVersion>
-    	<DefineConstants>$(DefineConstants);R23</DefineConstants>
+    	<DefineConstants>$(DefineConstants);R2023</DefineConstants>
   </PropertyGroup>
 
 <PropertyGroup>
@@ -51,8 +51,14 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
+	<PropertyGroup>
+      <BaseOutputPath>..\..\bundle\$(RevitVersion)</BaseOutputPath>
+    </PropertyGroup>
+
  <ItemGroup>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*">
+      <GeneratePathProperty>False</GeneratePathProperty>
+    </PackageReference>
   </ItemGroup>
 	
 </Project>
