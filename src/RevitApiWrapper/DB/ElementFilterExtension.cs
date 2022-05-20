@@ -1,9 +1,18 @@
-﻿using Autodesk.Revit.DB;
+﻿#region Headers
+/* ____________________________________________________________
+*   DESCRIPTION: ElementFilterExtension
+*   AUTHOR: Young
+*   CREARETIME: 5/19/2022 8:35:55 PM 
+*   CLRVERSION: 4.0.30319.42000
+*  ____________________________________________________________
+*/
+#endregion
+
+using Autodesk.Revit.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace RevitApiWrapper.DB
 {
@@ -28,7 +37,7 @@ namespace RevitApiWrapper.DB
         /// <param name="view"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static IEnumerable<T> GetElementsByClass<T>(this Document doc, View view = null) where T : Element
+        public static IEnumerable<T> GetElementsByClass<T>(this Document doc, View view = null, Func<T, bool> predicate = null) where T : Element
         {
             if (doc == null)
             {
@@ -36,7 +45,8 @@ namespace RevitApiWrapper.DB
             }
             using (var collector = GetCollector(doc, view))
             {
-                return collector.OfClass(typeof(T)).OfType<T>();
+                var elements = collector.OfClass(typeof(T)).OfType<T>();
+                return predicate is null ? elements : elements.Where(predicate);
             }
         }
 
@@ -50,7 +60,7 @@ namespace RevitApiWrapper.DB
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
-        public static IEnumerable<T> GetElementsByCategory<T>(this Document doc, BuiltInCategory builtInCategory, View view = null) where T : Element
+        public static IEnumerable<T> GetElementsByCategory<T>(this Document doc, BuiltInCategory builtInCategory, View view = null, Func<T, bool> predicate = null) where T : Element
         {
             if (doc == null)
             {
@@ -63,7 +73,8 @@ namespace RevitApiWrapper.DB
 
             using (var collector = GetCollector(doc, view))
             {
-                return collector.OfCategory(builtInCategory).OfType<T>();
+                var elements = collector.OfCategory(builtInCategory).OfType<T>();
+                return predicate is null ? elements : elements.Where(predicate);
             }
         }
 
@@ -76,7 +87,7 @@ namespace RevitApiWrapper.DB
         /// <param name="view"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static IEnumerable<T> GetElementsByCategory<T>(this Document doc, Category category, View view = null) where T : Element
+        public static IEnumerable<T> GetElementsByCategory<T>(this Document doc, Category category, View view = null, Func<T, bool> predicate = null) where T : Element
         {
             if (doc == null)
             {
@@ -89,7 +100,8 @@ namespace RevitApiWrapper.DB
 
             using (var collector = GetCollector(doc, view))
             {
-                return collector.OfCategoryId(category.Id).OfType<T>();
+                var elements = collector.OfCategoryId(category.Id).OfType<T>();
+                return predicate is null ? elements : elements.Where(predicate);
             }
         }
 
@@ -102,7 +114,7 @@ namespace RevitApiWrapper.DB
         /// <param name="view"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static IEnumerable<T> GetElementsByFilter<T>(this Document doc, ElementFilter filter, View view = null) where T : Element
+        public static IEnumerable<T> GetElementsByFilter<T>(this Document doc, ElementFilter filter, View view = null, Func<T, bool> predicate = null) where T : Element
         {
             if (doc is null)
             {
@@ -116,7 +128,8 @@ namespace RevitApiWrapper.DB
             using (var collector = GetCollector(doc, view))
             using (filter)
             {
-                return collector.WherePasses(filter).OfType<T>();
+                var elements = collector.WherePasses(filter).OfType<T>();
+                return predicate is null ? elements : elements.Where(predicate);
             }
 
         }
