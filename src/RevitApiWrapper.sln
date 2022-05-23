@@ -5,6 +5,10 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevitApiWrapper", "RevitApiWrapper\RevitApiWrapper.csproj", "{6F6C3333-7B1B-4A55-AD18-1EFA0A28BE75}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F6BAC33B-9BAE-4EC0-B7D3-7FC7387E8B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitApiWrapper.Tests", "RevitApiWrapper.Tests\RevitApiWrapper.Tests.csproj", "{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +49,36 @@ Global
 		{6F6C3333-7B1B-4A55-AD18-1EFA0A28BE75}.Release2022|Any CPU.Build.0 = Release2022|Any CPU
 		{6F6C3333-7B1B-4A55-AD18-1EFA0A28BE75}.Release2023|Any CPU.ActiveCfg = Release2023|Any CPU
 		{6F6C3333-7B1B-4A55-AD18-1EFA0A28BE75}.Release2023|Any CPU.Build.0 = Release2023|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2019|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2019|Any CPU.Build.0 = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2020|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2020|Any CPU.Build.0 = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2021|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2021|Any CPU.Build.0 = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2022|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2022|Any CPU.Build.0 = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2023|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Debug2023|Any CPU.Build.0 = Debug|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2019|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2019|Any CPU.Build.0 = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2020|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2020|Any CPU.Build.0 = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2021|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2021|Any CPU.Build.0 = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2022|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2022|Any CPU.Build.0 = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2023|Any CPU.ActiveCfg = Release|Any CPU
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8}.Release2023|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8FCFF44C-6A47-4915-9AB4-656EA0AC1CC8} = {F6BAC33B-9BAE-4EC0-B7D3-7FC7387E8B5D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC2ECF73-605E-41C4-9014-671A6DDE808C}
