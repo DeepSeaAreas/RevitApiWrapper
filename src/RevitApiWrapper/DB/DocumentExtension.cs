@@ -65,5 +65,50 @@ namespace RevitApiWrapper.DB
             }
             return doc.GetElement(reference) as T;
         }
+
+        public static bool RunTransaction(this Document doc, string transactionName, Action action, IFailuresPreprocessor failuresPreprocessor = null)
+        {
+            if (doc == null)
+            {
+                throw new ArgumentNullException(nameof(doc));
+            }
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+            transactionName = string.IsNullOrEmpty(transactionName) ? Guid.NewGuid().ToString() : transactionName;
+            using (var transaction = new Transaction(doc, transactionName))
+            using (var handlerOptions = transaction.GetFailureHandlingOptions())
+            {
+                var transStatus = TransactionStatus.Uninitialized;
+                handlerOptions.SetFailuresPreprocessor(failuresPreprocessor ?? new FailuresPreprocessor());
+                handlerOptions.SetClearAfterRollback(true);
+                handlerOptions.SetDelayedMiniWarnings(false);
+                transaction.SetFailureHandlingOptions(handlerOptions);
+                try
+                {
+                    transaction.Start();
+                    action.Invoke();
+                    transStatus = transaction.Commit();
+                    return transStatus == TransactionStatus.Committed;
+                }
+                catch (Exception e)
+                {
+                    if (transStatus == TransactionStatus.Started)
+                    {
+                        transaction.RollBack();
+                    }
+                    return false;
+                }
+            }
+        }
+        internal class FailuresPreprocessor : IFailuresPreprocessor
+        {
+            public FailureProcessingResult PreprocessFailures(FailuresAccessor failuresAccessor)
+            {
+                failuresAccessor.DeleteAllWarnings();
+                return FailureProcessingResult.Continue;
+            }
+        }
     }
 }
