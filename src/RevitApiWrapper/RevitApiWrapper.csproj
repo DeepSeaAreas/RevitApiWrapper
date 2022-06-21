@@ -20,6 +20,11 @@
     	<DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
 
+	<PropertyGroup Condition="$(Configuration.Contains('2018'))">
+		<RevitVersion>2018</RevitVersion>
+		<DefineConstants>$(DefineConstants);R2018</DefineConstants>
+  </PropertyGroup>
+	
 	<PropertyGroup Condition="$(Configuration.Contains('2019'))">
     	<RevitVersion>2019</RevitVersion>
     	<DefineConstants>$(DefineConstants);R2019</DefineConstants>
