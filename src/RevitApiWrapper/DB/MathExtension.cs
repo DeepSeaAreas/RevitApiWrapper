@@ -43,7 +43,7 @@ namespace RevitApiWrapper.DB
 
         public static double MillimeterToFeet(this double number)
         {
-#if R2019 || R2020
+#if R2019 || R2020 || R2018
             return UnitUtils.ConvertToInternalUnits(number, DisplayUnitType.DUT_MILLIMETERS);
 #else
             return UnitUtils.ConvertToInternalUnits(number, UnitTypeId.Millimeters);
@@ -53,7 +53,7 @@ namespace RevitApiWrapper.DB
 
         public static double FeetToMillimeter(this double number)
         {
-#if R2019 || R2020
+#if R2019 || R2020 || R2018
             return UnitUtils.ConvertFromInternalUnits(number, DisplayUnitType.DUT_MILLIMETERS);
 #else
             return UnitUtils.ConvertFromInternalUnits(number, UnitTypeId.Millimeters);
