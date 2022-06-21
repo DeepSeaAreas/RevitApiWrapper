@@ -4,7 +4,7 @@
     <TargetFramework>net48</TargetFramework>
     <LangVersion>preview</LangVersion>
 		<PlatformTarget>x64</PlatformTarget>
-		<Configurations>Debug;Debug2019;Debug2020;Debug2021;Debug2022;Debug2023;</Configurations>
+		<Configurations>Debug;Debug2019;Debug2020;Debug2021;Debug2022;Debug2023;Release;Release2019;Release2020;Release2021;Release2022;Release2023;Debug2018;Release2018</Configurations>
 		<Configurations>$(Configurations);Release;Release2019;Release2020;Release2021;Release2022;Release2023</Configurations>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
