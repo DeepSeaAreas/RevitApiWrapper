@@ -43,7 +43,7 @@ namespace RevitApiWrapper.UI
         {
             _taskCompletionSource = new TaskCompletionSource<object>();
             var task = Task.Run(async () => (T)await _taskCompletionSource.Task);
-            _externalEventHandler.Func = (uiApp) => func.Invoke(uiApp);
+            _externalEventHandler.Func = func.Invoke;
             _externalEvent.Raise();
             return task;
         }
