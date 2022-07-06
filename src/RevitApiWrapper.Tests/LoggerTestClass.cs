@@ -15,12 +15,14 @@ namespace RevitApiWrapper.Tests
     {
         private readonly ILogger _logger;
 
+        public static ILoggerFactory LogFactory { get; set; }
+
         public LoggerTestClass()
         {
-            _logger=LoggerFactory.Build(LoggerConfiguration.Default.FromJson())
-                .CreateLogger<LoggerTestClass>()
-                .AOP(LoggerAOPHelper.LoadAOPJson());
-
+            ILoggerConfiguration config = LoggerConfiguration.Default.FromJson();
+            LogFactory = LoggerFactory.Build(config);
+            _logger=LogFactory.CreateLogger<LoggerTestClass>()
+                              .AOP(LoggerAOPHelper.LoadAOPJson());
         }
 
         public void logTest()

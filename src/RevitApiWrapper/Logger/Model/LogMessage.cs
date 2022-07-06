@@ -81,5 +81,14 @@ namespace RevitApiWrapper.Logger.Model
         /// </summary>
         public string Exception { get; set; }
 
+        /// <summary>
+        /// 重写字符串
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{string.Format("{0:yyyy-MM-dd HH:mm:ss.fff zzz}",LoggerTime)} [{Level}] {Message}{Environment.NewLine}{Exception}";
+        }
+
     }
 }
