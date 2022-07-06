@@ -69,5 +69,21 @@
       <GeneratePathProperty>False</GeneratePathProperty>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+  </ItemGroup>
+
+ <ItemGroup>
+   <None Update="Logger\AOP\LoggerAOP.json">
+     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+   </None>
+   <None Update="Logger\LoggerSetting.json">
+     <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+   </None>
+ </ItemGroup>
 	
 </Project>

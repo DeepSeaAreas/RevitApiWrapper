@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
@@ -71,6 +71,15 @@
     <ProjectReference Include="..\RevitApiWrapper\RevitApiWrapper.csproj">
       <CopyLocal>True</CopyLocal>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LoggerAOP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LoggerSetting.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

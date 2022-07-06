@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using RevitApiWrapper.DB;
 using System;
+using RevitApiWrapper.Logger.Extension;
+using RevitApiWrapper.Logger;
 
 namespace RevitApiWrapper.Tests
 {
@@ -89,6 +91,13 @@ namespace RevitApiWrapper.Tests
             var source = 10d;
             var target = source.FeetToMillimeter();
             Assert.NotZero(target);
+        }
+
+        [Test]
+        public void LoggerTest()
+        {
+            LoggerTestClass logger = new LoggerTestClass();
+            logger.logTest();
         }
     }
 }
