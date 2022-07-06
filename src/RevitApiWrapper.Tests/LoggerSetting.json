@@ -1,0 +1,23 @@
+{
+  "RAWLogger": {
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft": "Error",
+        "System": "Error",
+        "Microsoft.Hosting.Lifetime": "Information"
+      }
+    },
+    "Extension": [
+      {
+        "AssemblyName": "RevitApiWrapper",
+        "TypeName": "RevitApiWrapper.Logger.FileActuator.Actuator",
+        "Args": {
+          "Path": "Logs/log.txt",
+          "OutputTemplate": "{LoggerTime:yyyy-MM-dd HH:mm:ss.fff zzz} || {Level} || {SourceContext} || {Message} || {Exception} ||end",
+          "Interval": "Day"
+        }
+      }
+    ]
+  }
+}
