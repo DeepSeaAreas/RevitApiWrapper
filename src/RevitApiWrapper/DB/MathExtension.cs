@@ -9,10 +9,6 @@
 #endregion
 using Autodesk.Revit.DB;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RevitApiWrapper.DB
 {
@@ -41,9 +37,14 @@ namespace RevitApiWrapper.DB
             return Math.Abs(source - target) <= tolerance;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static double MillimeterToFeet(this double number)
         {
-#if R2019 || R2020
+#if R2018|| R2019 || R2020
             return UnitUtils.ConvertToInternalUnits(number, DisplayUnitType.DUT_MILLIMETERS);
 #else
             return UnitUtils.ConvertToInternalUnits(number, UnitTypeId.Millimeters);
@@ -51,9 +52,14 @@ namespace RevitApiWrapper.DB
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public static double FeetToMillimeter(this double number)
         {
-#if R2019 || R2020
+#if R2018|| R2019 || R2020
             return UnitUtils.ConvertFromInternalUnits(number, DisplayUnitType.DUT_MILLIMETERS);
 #else
             return UnitUtils.ConvertFromInternalUnits(number, UnitTypeId.Millimeters);
@@ -128,6 +134,7 @@ namespace RevitApiWrapper.DB
         {
             return number * Math.PI / 180d;
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// 通过向量对封闭路径进行偏移(扩大)
@@ -217,5 +224,7 @@ namespace RevitApiWrapper.DB
 
             return loop;
         }
+=======
+>>>>>>> refs/remotes/upstream/develop
     }
 }
