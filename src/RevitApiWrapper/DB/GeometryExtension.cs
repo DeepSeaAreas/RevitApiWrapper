@@ -187,11 +187,13 @@ namespace RevitApiWrapper.DB
             throw new Exception("CreateReversedCurve - Unreachable");
         }
         #endregion
+
+        #region CurveLoop
         /// <summary>
         /// 通过向量对封闭路径进行偏移(扩大)
         /// </summary>
         /// <param name="curveLoop"></param>
-        /// <param name="offset"></param>
+        /// <param name="offset">扩大的值</param>
         /// <returns></returns>
         /// <remarks>
         /// 第二种方法：来源:https://blog.csdn.net/happy__888/article/details/315762 
@@ -270,7 +272,53 @@ namespace RevitApiWrapper.DB
             }
             return loop;
         }
+        /// <summary>
+        /// 获取路径的点
+        /// <remarks>
+        /// 输入CurveLoop可以使用方法IsCounterclockwise判定为顺时针或逆时针
+        /// </remarks>
+        /// </summary>
+        /// <param name="curveLoop"></param>
+        /// <returns>CurveLoop点集</returns>
+        public static List<XYZ> GetVertexesFromCurveLoop(this CurveLoop curveLoop)
+        {
+            List<XYZ> res = new List<XYZ>();
+            var loop = curveLoop.GetEnumerator();
+            while (loop.MoveNext())
+                res.Add((loop.Current as Curve)?.GetStartPoint());
+            return res;
 
+        }
+        #endregion
+        #region XYZ
+        /// <summary>
+        /// 修改Z值
+        /// </summary>
+        /// <param name="point">宿主</param>
+        /// <param name="elevation">目标值</param>
+        /// <returns>修改后的Point值</returns>
+        public static XYZ SetZ(this XYZ point , double elevation)
+        {
+            return new XYZ(point.X,point.Y, elevation);
+        }
 
+        #endregion
+        #region UV
+        /// <summary>
+        /// 返回BoundingBoxUV的中心UV位置
+        /// </summary>
+        /// <param name="uv"></param>
+        /// <returns></returns>
+        public static UV GetMiddleUV(this BoundingBoxUV uv)
+        {
+            var maxUV = uv.Max;
+            var minUV = uv.Min;
+            var maxU = maxUV.U;
+            var maxV = maxUV.V;
+            var minU = minUV.U;
+            var minV = minUV.V;
+            return new UV((maxU + minU) / 2, (minV + maxV) / 2);
+        }
+        #endregion
     }
 }
